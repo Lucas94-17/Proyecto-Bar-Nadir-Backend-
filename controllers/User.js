@@ -107,6 +107,7 @@ async function readUsers(req,res){
     else getUsersPaginated(req,res)
 }
 
+//acá exportamos las funciones , para que se puedan utilizar fuera del archivo
 module.exports = {
     deleteUser,
     readUser,
