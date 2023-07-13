@@ -6,3 +6,5 @@ const {
     readUsers,
     updateUser,
 } = require("../controllers/User")
+
+const {login,register} = require("../controllers/Auth")
