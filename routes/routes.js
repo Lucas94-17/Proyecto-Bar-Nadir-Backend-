@@ -1,4 +1,6 @@
 const express = require ("express")
+//aca definimos router 
+const router = express.Router()
 // aca se importa las funciones declaradas en los controladores de User
 const {
     deleteUser,
@@ -8,3 +10,7 @@ const {
 } = require("../controllers/User")
 
 const {login,register} = require("../controllers/Auth")
+
+router.get("/read-users",readUser)
+
+module.exports = router
