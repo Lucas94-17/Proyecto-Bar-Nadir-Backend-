@@ -103,7 +103,7 @@ async function readUser(req,res){
 }
 
 async function readUsers(req,res){
-    if(Object.keys(req,query).length === 0) getUsers(req,res)
+    if(Object.keys(req.query).length === 0) getUsers(req,res)
     else getUsersPaginated(req,res)
 }
 

@@ -11,6 +11,6 @@ const {
 
 const {login,register} = require("../controllers/Auth")
 
-router.get("/read-users",readUser)
+router.get("/read-users",readUsers)
 
 module.exports = router
