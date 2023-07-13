@@ -31,4 +31,4 @@ const courseSchema = new Schema({
 courseSchema.index({ title: "text", detail: "text" })
 
 //! Como primer parametro, va el nombre de la coleccion
-module.exports = model("Courses", courseSchema)
+module.exports = model("Food", courseSchema)
