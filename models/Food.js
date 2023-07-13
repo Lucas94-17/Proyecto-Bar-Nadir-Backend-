@@ -17,6 +17,14 @@ const courseSchema = new Schema({
 		type: String,
 		required: true,
 	},
+	price:{//Esto se agregó nuevo
+		type : String,
+		required:true,
+	},
+	category:{//Esto se agregó nuevo
+		type:String,
+		required:true,
+	}
 })
 
 //! Esto es necesario para que mongo indexe los campos que permiten busqueda x texto
