@@ -9,8 +9,18 @@ const {
     updateUser,
 } = require("../controllers/User")
 
+const {
+	validateCreate,
+	validateDelete,
+	validateGetWithQueryStrings,
+} = require("../middlewares/validators/user")
+
 const {login,register} = require("../controllers/Auth")
 
 router.get("/read-users",readUsers)
 
+router.post("/create-user",validateCreate,register)
+
+
+router.post("/login" ,login)
 module.exports = router
