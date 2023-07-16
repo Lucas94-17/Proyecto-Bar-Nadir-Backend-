@@ -45,9 +45,6 @@ const { verifyIsAdmin } = require("../middlewares/VerifyIsAdmin")
 
 
 //      Food !!
-const {
-	validateCreateCourse,
-} = require("../middlewares/validators/course")
 
 const {
         readFoods,
@@ -57,14 +54,30 @@ const {
         searchFoods,
 } = require("../controllers/Course")
 
+const {
+    validateCreateFood
+} = require("../middlewares/validators/food")
+
+
 //Leer la comida que hay en la base de datos
 router.get("/read-foods", readFoods)
 
 router.post(
 	"/create-food",
-	validateCreateCourse,
+	validateCreateFood,
 	verifyToken,
 	verifyIsAdmin,
 	createFood
 )
+
+router.get("/search-Food", searchFoods)
+
+router.delete(
+	"/delete-Food/:id",
+	verifyToken,
+	verifyIsAdmin,
+	deleteFood
+)
+router.put("/update-Food", verifyToken, verifyIsAdmin, updateFood)
+
 module.exports = router
