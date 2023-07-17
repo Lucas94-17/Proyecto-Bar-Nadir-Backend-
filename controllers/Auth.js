@@ -7,10 +7,12 @@ const bcrypt= require("bcrypt")
 //importamos uuid , que funciona para generar un id
 const uuid = require("uuid")
 
+const UserModel = require ("../models/User")
+
 function login(req,res) {
     const {email, password} = req.body
 
-    UserModel.finOne({email}).then(async response =>{
+    UserModel.findOne({email}).then(async response =>{
         if(response?.id){
             const isMatch = await bcrypt.compare(
                 password,

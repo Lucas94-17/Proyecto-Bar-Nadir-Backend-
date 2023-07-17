@@ -10,9 +10,6 @@ const validateCreateFood = [
 		.exists()
 		.notEmpty()
 		.withMessage("El campo title es obligatorio"),
-	check("title")
-		.exists()
-		.withMessage("ya existe"),
 	(req, res, next) => {
 		try {
 			validationResult(req).throw()
