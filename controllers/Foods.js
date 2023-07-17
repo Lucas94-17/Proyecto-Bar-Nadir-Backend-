@@ -19,10 +19,14 @@ async function createFood(req,res){
 
     try{
         UserModel.findOne({id : creator_id}).then(response =>{
-            if(response?.id === "admin"){
+            if(response?.role === "admin"){
                 const data = new FoodModel({
                     id : uuid.v4(),
-                    title,img,detail,price,category,
+                    title,
+                    img,
+                    detail,
+                    price,
+                    category,
                 })
                 data.save()
                 res.status(201).json({
