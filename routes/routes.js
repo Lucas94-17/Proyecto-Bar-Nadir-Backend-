@@ -2,6 +2,13 @@ const express = require ("express")
 //aca definimos router 
 const router = express.Router()
 
+
+//      Middlewares : 
+
+const { verifyToken } = require("../middlewares/verifyToken");
+const { verifyIsAdmin } = require("../middlewares/VerifyIsAdmin")
+
+
 // aca se importa las funciones declaradas en los controladores de User
 
 //       Usuario!
@@ -38,11 +45,6 @@ router.get("/read-user/:id", verifyToken, readUser)
 
 router.post("/login" ,login)
 
-//      Middlewares : 
-
-const { verifyToken } = require("../middlewares/verifyToken");
-const { verifyIsAdmin } = require("../middlewares/VerifyIsAdmin")
-
 
 //      Food !!
 
@@ -52,7 +54,7 @@ const {
         deleteFood,
         updateFood,
         searchFoods,
-} = require("../controllers/Course")
+} = require("../controllers/Foods")
 
 const {
     validateCreateFood
