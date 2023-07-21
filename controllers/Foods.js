@@ -6,7 +6,7 @@ const {text} = require("express")
 
 async function readFoods(_,res){
     try{
-        await CourseModel.find().then(response =>
+        await FoodModel.find().then(response =>
             res.status(200).json(response)
         )
     }catch(error){
