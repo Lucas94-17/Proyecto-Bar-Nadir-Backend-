@@ -8,7 +8,7 @@ const validateCreate = [
         .exists()
         .isEmail()
         .withMessage("El campo name debe ser un email"),
-    check("userName")
+    check("username")
         .exists()
         .isString(),
     (req,res,next) => {
