@@ -5,7 +5,7 @@ const {
 	validationResult,
 } = require("express-validator")
 
-const validateCreateFood = [
+const validateCreateMenu = [
 	check("title")
 		.exists()
 		.notEmpty()
@@ -15,13 +15,13 @@ const validateCreateFood = [
 			validationResult(req).throw()
 			return next()
 		} catch (err) {
-			res.status(403 , json({message:"Error ! vuelve a intentarlo"}))
+			res.status(403)
 			res.send({ errors: err.array() })
 		}
 	},
 ]
 
-/* const validateDelete = [
+const validateDelete = [
 	param("id").exists().isString(),
 	(req, res, next) => {
 		try {
@@ -46,10 +46,10 @@ const validateGetWithQueryStrings = [
 			res.send({ errors: err.array() })
 		}
 	},
-] */
+]
 
 module.exports = {
-	validateCreateFood,
-	/* 	validateDelete,
-	validateGetWithQueryStrings, */
+	validateCreateMenu,
+	validateDelete,
+	validateGetWithQueryStrings,
 }

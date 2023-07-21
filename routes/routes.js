@@ -1,24 +1,4 @@
-const express = require ("express")
-//aca definimos router 
-const router = express.Router()
-
-
-//      Middlewares : 
-
-const { verifyToken } = require("../middlewares/verifyToken");
-const { verifyIsAdmin } = require("../middlewares/VerifyIsAdmin")
-
-
-// aca se importa las funciones declaradas en los controladores de User
-
-//       Usuario!
-
-const {
-    deleteUser,
-    readUser,
-    readUsers,
-    updateUser,
-} = require("../controllers/User")
+const express = require("express")
 
 const {
 	validateCreate,
@@ -26,63 +6,67 @@ const {
 	validateGetWithQueryStrings,
 } = require("../middlewares/validators/user")
 
-const {login,register} = require("../controllers/Auth")
+const {
+	validateCreateMenu,
+} = require("../middlewares/validators/menu")
 
+const {
+	deleteUser,
+	readUser,
+	readUsers,
+	updateUser,
+} = require("../controllers/User")
 
-router.get("/read-users",readUsers)
+const { login, register } = require("../controllers/Auth")
 
-router.post("/create-user",validateCreate,register)
+const {
+	readMenu,
+	readMenues,
+	createMenu,
+	deleteMenu,
+	searchMenues,
+	updateMenu,
+} = require("../controllers/Menu")
+
+const { verifyToken } = require("../middlewares/verifyToken")
+const { verifyIsAdmin } = require("../middlewares/verifyIsAdmin")
+
+const router = express.Router()
+router.get("/read-foods", readMenu)
+router.post("/create-user", validateCreate, register)
+
 router.delete("/delete-user/:id", validateDelete, deleteUser)
-router.put("/update-user", updateUser)//peticion get para el paginado al leer los usuarios
+router.put("/update-user", updateUser)
 router.get(
 	"/read-users-paginated",
 	validateGetWithQueryStrings,
 	readUsers
 )
-
 router.get("/read-users", verifyToken, verifyIsAdmin, readUsers)
 router.get("/read-user/:id", verifyToken, readUser)
 
-router.post("/login" ,login)
+router.post("/login", login)
 
+router.get("/read-menues", readMenues)
 
-//      Food !!
-
-const {
-        readFoods,
-		readFood,
-        createFood,
-        deleteFood,
-        updateFood,
-        searchFoods,
-} = require("../controllers/Foods")
-
-const {
-    validateCreateFood
-} = require("../middlewares/validators/food")
-
-
-//Leer la comida que hay en la base de datos
-router.get("/read-foods", readFoods)
+router.get("/read-menu/:id", readMenues)
 
 router.post(
-	"/create-food",
-	validateCreateFood,
+	"/create-menu",
+	validateCreateMenu,
 	verifyToken,
 	verifyIsAdmin,
-	createFood
+	createMenu
 )
-router.get("/read-Food",readFood)
-router.get("/search-Food", searchFoods)
+
+router.get("/search-menues", searchMenues)
 
 router.delete(
-	"/delete-Food/:id",
+	"/delete-menu/:id",
 	verifyToken,
 	verifyIsAdmin,
-	deleteFood
+	deleteMenu
 )
-
-
-router.put("/update-Food", verifyToken, verifyIsAdmin, updateFood)
+router.put("/update-menu", verifyToken, verifyIsAdmin, updateMenu)
 
 module.exports = router
