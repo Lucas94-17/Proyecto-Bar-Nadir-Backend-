@@ -50,6 +50,7 @@ router.post("/login" ,login)
 
 const {
         readFoods,
+		readFood,
         createFood,
         deleteFood,
         updateFood,
@@ -71,7 +72,7 @@ router.post(
 	verifyIsAdmin,
 	createFood
 )
-
+router.get("/read-Food",readFood)
 router.get("/search-Food", searchFoods)
 
 router.delete(
@@ -80,6 +81,8 @@ router.delete(
 	verifyIsAdmin,
 	deleteFood
 )
+
+
 router.put("/update-Food", verifyToken, verifyIsAdmin, updateFood)
 
 module.exports = router

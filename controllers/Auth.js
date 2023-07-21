@@ -60,14 +60,14 @@ function login(req,res) {
 
 async function register  (req,res) {
     try{
-        const {userName,password,email} =req.body // aca trae el body y lo guarda en un array
+        const {username,password,email} =req.body // aca trae el body y lo guarda en un array
 
         const salt = bcrypt.genSaltSync(10) // inicializamos bcrypt y usamos la funcion genSaltSync para determinar de cuantos caracteres será nuestra password
         const hash = await bcrypt.hash(password,salt)//inicializamos de nuevo bcrypt pero con la funcion hash , le damos los parametros y guardamos todo en la variable hash
 
         const data = new UserModel({
             id : uuid.v4(),
-            userName,
+            username,
             password : hash,
             email,
             role : "client",
