@@ -14,6 +14,18 @@ async function readFoods(_,res){
     }
 }
 
+async function readFood(req, res) {
+	const { id } = req.params
+
+	try {
+		await FoodModelModel.findOne({ id }).then(response =>
+			res.status(200).json(response)
+		)
+	} catch (error) {
+		res.status(400).json({ message: error.message })
+	}
+}
+
 async function createFood(req,res){
     const{title,img,detail,price,category,creator_id} = req.body
 
@@ -106,6 +118,7 @@ async function searchFoods(req,res){
 
 module.exports = {
     readFoods,
+    readFood,
 	createFood,
 	deleteFood,
 	updateFood,
