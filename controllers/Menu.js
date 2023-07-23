@@ -29,13 +29,15 @@ async function readMenu(req, res) {
 }
 
 async function createMenu(req, res) {
-	const { title, img, detail } = req.body
+	const { title, img, detail,precio,categoria } = req.body
 
 	const data = new MenuModel({
 		id: uuid.v4(),
 		title,
 		img,
 		detail,
+		precio,
+		categoria,
 	})
 
 	data.save()
