@@ -29,7 +29,7 @@ const {
 } = require("../controllers/Menu")
 
 const { verifyToken } = require("../middlewares/verifyToken")
-const { verifyIsAdmin } = require("../middlewares/verifyIsAdmin")
+const { verifyIsAdmin } = require("../middlewares/VerifyIsAdmin")
 
 const router = express.Router()
 router.get("/read-foods", readMenu)
@@ -68,5 +68,7 @@ router.delete(
 	deleteMenu
 )
 router.put("/update-menu", verifyToken, verifyIsAdmin, updateMenu)
+
+router.post("/create-Orders",createorder)
 
 module.exports = router

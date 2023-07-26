@@ -1,10 +1,7 @@
-//Acá haremos las autenticaciones para cuando el usuario se regitre y cuando inice sesion
-
-// aca se importa la funcion jsonwebtoken que nos sirve para el token una vez iniciada la sesion
 const jwt = require("jsonwebtoken")
-//Importamos bcrypt , que funciona para encriptar las passwords
+
 const bcrypt= require("bcrypt") 
-//importamos uuid , que funciona para generar un id
+
 const uuid = require("uuid")
 
 const UserModel = require ("../models/User")
@@ -60,10 +57,10 @@ function login(req,res) {
 
 async function register  (req,res) {
     try{
-        const {username,password,email,address} =req.body // aca trae el body y lo guarda en un array
+        const {username,password,email,address} =req.body 
 
-        const salt = bcrypt.genSaltSync(10) // inicializamos bcrypt y usamos la funcion genSaltSync para determinar de cuantos caracteres será nuestra password
-        const hash = await bcrypt.hash(password,salt)//inicializamos de nuevo bcrypt pero con la funcion hash , le damos los parametros y guardamos todo en la variable hash
+        const salt = bcrypt.genSaltSync(10) 
+        const hash = await bcrypt.hash(password,salt)
 
         const data = new UserModel({
             id : uuid.v4(),

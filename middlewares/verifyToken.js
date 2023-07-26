@@ -1,5 +1,3 @@
-//aca creamos la funcion que verifica el token
-//Lo que hace verify token es verificar si existe el token o no , 
 
 const jwt = require("jsonwebtoken")
 
