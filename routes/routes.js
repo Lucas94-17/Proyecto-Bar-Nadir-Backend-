@@ -32,6 +32,9 @@ const { verifyToken } = require("../middlewares/verifyToken")
 const { verifyIsAdmin } = require("../middlewares/VerifyIsAdmin")
 
 const router = express.Router()
+
+const {readOrders,createorder} = require("../controllers/Orders")
+
 router.get("/read-foods", readMenu)
 router.post("/create-user", validateCreate, register)
 

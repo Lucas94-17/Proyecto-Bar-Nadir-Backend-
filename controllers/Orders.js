@@ -2,12 +2,12 @@ const OrdersModel = require("../models/Orders")
 
 async function createorder  (req,res) {
     try{
-        const {total,datos,item} =req.body 
+        const {total,datos,items} =req.body 
 
         const data = new OrdersModel({
-            total,
             datos,
-            item,
+            items,
+            total
 
         })
         data.save()
