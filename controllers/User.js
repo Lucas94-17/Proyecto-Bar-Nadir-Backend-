@@ -1,12 +1,11 @@
 const User = require("../models/User")
 const UserModel = require("../models/User")
 
-// Para ver los usuarios , con el metodo get usamos la siguiente funcion asincrona
-//esto envía directamente los datos que hay guardamos en la base de datos , por eso no hay request , es decir, no hay nada de parte del front
+
 async function getUsers(_,res){
     try{
         await UserModel.find().then(response => {
-            const excludePassword = response.map(user=>{ // aca excluimos el password de la request get 
+            const excludePassword = response.map(user=>{ 
                 const {id,username,email} = user
                 return {id,username,email}
             })
@@ -18,9 +17,9 @@ async function getUsers(_,res){
     }
 }
 
-//lo que hace esto es una páginación de los usuarios , con el método get
+
 async function getUsersPaginated(req,res){
-    const {size,page} =req.query // acá recibe lo que viene de la query , y obtenemos el size y page , es decir , el tamaño de elementos a ser devueltos y la cantidad de paginas
+    const {size,page} =req.query 
 
     const skip = size * page - size
 
@@ -44,9 +43,6 @@ async function getUsersPaginated(req,res){
         res.status(400).json({ message : error.message })
     }
 }
-
-
-//lo que hace ésta función es eliminar el usuario , el método deleteone
 async function deleteUser(req,res){
     try{
         const {id} =req.params
@@ -70,7 +66,7 @@ async function updateUser(req,res){
     try {
         const {id,name} = req.body
 
-        await UserModel.findOneAndUpdate({id} , {name}).then( // la funcion findOneAndUpdate actualiza un único documento , dependiendo de las claves que se les otorga 
+        await UserModel.findOneAndUpdate({id} , {name}).then(
             response => {
                 if(response.id){
                     res.status(200).json({
@@ -88,8 +84,6 @@ async function updateUser(req,res){
         res.status(400).json({ message: error.message})
     }
 }
-
-//Ésta funcion lee un usuario , con la funcion findeone , encuentra la primera igualdad segun el id que le pasamos de la request
 async function readUser(req,res){
     try {
         const {id} = req.params
@@ -106,8 +100,6 @@ async function readUsers(req,res){
     if(Object.keys(req.query).length === 0) getUsers(req,res)
     else getUsersPaginated(req,res)
 }
-
-//acá exportamos las funciones , para que se puedan utilizar fuera del archivo
 module.exports = {
     deleteUser,
     readUser,

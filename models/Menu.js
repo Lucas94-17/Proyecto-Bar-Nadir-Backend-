@@ -9,7 +9,11 @@ const menuSchema = new Schema({
 		type: String,
 		required: true,
 	},
-	img: {
+	precio: {
+		type: Number,
+		required: true,
+	},
+	categoria: {
 		type: String,
 		required: true,
 	},
@@ -17,18 +21,14 @@ const menuSchema = new Schema({
 		type: String,
 		required: true,
 	},
-	precio: {
-		type: String,
-		required: true,
-	},
-	categoria: {
+	img: {
 		type: String,
 		required: true,
 	}
 })
 
 //! Esto es necesario para que mongo indexe los campos que permiten busqueda x texto
-menuSchema.index({ title: "text", detail: "text" })
+menuSchema.index({ title: "text", detail: "text", precio: "text", categoria: "text" })
 
 //! Como primer parametro, va el nombre de la coleccion
 module.exports = model("Menues", menuSchema)

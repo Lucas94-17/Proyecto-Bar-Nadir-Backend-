@@ -49,7 +49,7 @@ router.post("/login", login)
 
 router.get("/read-menues", readMenues)
 
-router.get("/read-menu/:id", readMenues)
+router.get("/read-menu/:id", readMenu)
 
 router.post(
 	"/create-menu",

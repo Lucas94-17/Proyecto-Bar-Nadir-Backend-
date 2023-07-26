@@ -11,6 +11,9 @@ const validateCreate = [
     check("username")
         .exists()
         .isString(),
+    check("address")   
+        .exists()
+        .isString(),
     (req,res,next) => {
         try{
             validationResult(req).throw()

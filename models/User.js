@@ -2,7 +2,6 @@ const mongoose = require("mongoose")
 
 const { model, Schema } = mongoose
 
-//! Creamos la estructura de un tipo de documento (users)
 const userSchema = new Schema({
 	id: String,
 	email: {
@@ -18,6 +17,10 @@ const userSchema = new Schema({
 		type: String,
 		required: true,
 	},
+	address: {
+		type: String,
+		required: true,
+	},
 	role: {
 		type: String,
 		enum: ["admin", "client"],
@@ -25,5 +28,4 @@ const userSchema = new Schema({
 	},
 })
 
-//! Como primer parametro, va el nombre de la coleccion
 module.exports = model("Users", userSchema)
