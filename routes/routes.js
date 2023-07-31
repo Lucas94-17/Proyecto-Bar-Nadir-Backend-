@@ -40,12 +40,14 @@ router.post("/create-user", validateCreate, register)
 
 router.delete("/delete-user/:id", validateDelete, deleteUser)
 router.put("/update-user", updateUser)
+
 router.get(
 	"/read-users-paginated",
 	validateGetWithQueryStrings,
 	readUsers
 )
-router.get("/read-users", verifyToken, verifyIsAdmin, readUsers)
+
+router.get("/read-users", readUsers)
 router.get("/read-user/:id", verifyToken, readUser)
 
 router.post("/login", login)

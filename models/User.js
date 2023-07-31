@@ -26,6 +26,6 @@ const userSchema = new Schema({
 		enum: ["admin", "client"],
 		required: true,
 	},
-})
+},{versionKey:false})
 
 module.exports = model("Users", userSchema)

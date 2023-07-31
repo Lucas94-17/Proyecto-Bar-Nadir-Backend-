@@ -16,7 +16,7 @@ const menuSchema = new Schema({
 		type: Number,
 		required: true,
     }
-})
+},{versionKey:false})
 
 
 menuSchema.index({ title: "text", detail: "text" })
