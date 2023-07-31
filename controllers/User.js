@@ -64,13 +64,13 @@ async function deleteUser(req,res){
 
 async function updateUser(req,res){
     try {
-        const {id,name} = req.body
+        const { id_user, modify }  = req.body
 
-        await UserModel.findOneAndUpdate({id} , {name}).then(
+        await UserModel.findOneAndUpdate({ id: id_user } , modify).then(
             response => {
                 if(response.id){
                     res.status(200).json({
-                        message:`El documento con id ${response.id} ue editado exitosamente`,
+                        message:`El documento con id ${response.id} se editadó exitosamente`,
                         data : res.body
                     })
                 }else{
@@ -84,6 +84,8 @@ async function updateUser(req,res){
         res.status(400).json({ message: error.message})
     }
 }
+
+
 async function readUser(req,res){
     try {
         const {id} = req.params
@@ -96,10 +98,21 @@ async function readUser(req,res){
     }
 }
 
-async function readUsers(req,res){
-    if(Object.keys(req.query).length === 0) getUsers(req,res)
-    else getUsersPaginated(req,res)
+// async function readUsers(req,res){
+//     if(Object.keys(req.query).length === 0) getUsers(req,res)
+//     else getUsersPaginated(req,res)
+// }
+
+async function readUsers(_, res) {
+	try {
+		await UserModel.find().then(response =>
+			res.status(200).json(response)
+		)
+	} catch (error) {
+		res.status(400).json({ message: error.message })
+	}
 }
+
 module.exports = {
     deleteUser,
     readUser,

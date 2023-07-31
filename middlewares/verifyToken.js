@@ -6,8 +6,7 @@ function verifyToken(req, res, next) {
 
 	if (typeof bearerHeader !== "undefined") {
 		const bearerToken = bearerHeader.split(" ")[1]
-		// console.log(bearerToken)
-			jwt.verify( // esto es una funcion que se llama verify de jwt que es lo que genera el webtoken
+			jwt.verify( 
 				bearerToken,
 				process.env.SECRET,
 				async (error, payload) => {
