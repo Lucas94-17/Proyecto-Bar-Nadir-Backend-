@@ -5,11 +5,11 @@ const { model, Schema } = mongoose
 
 const menuSchema = new Schema({
 	datos: {
-		type: String,
+		type: Object,
 		required: true,
 	},
     items: {
-		type: String,
+		type: Object,
 		required: true,
 	},
 	total: {
