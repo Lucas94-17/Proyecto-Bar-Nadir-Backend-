@@ -15,7 +15,12 @@ const menuSchema = new Schema({
 	total: {
 		type: Number,
 		required: true,
-    }
+    },
+	estado:{
+		type:String,
+		required : true,
+		enum : ["En espera","En proceso","Terminado"]
+	}
 })
 
 

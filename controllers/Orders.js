@@ -7,7 +7,8 @@ async function createorder  (req,res) {
         const data = new OrdersModel({
             datos,
             items,
-            total
+            total,
+            estado:"En espera",
 
         })
         data.save()
