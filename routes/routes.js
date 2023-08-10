@@ -33,7 +33,7 @@ const { verifyIsAdmin } = require("../middlewares/VerifyIsAdmin")
 
 const router = express.Router()
 
-const {readOrders,createorder} = require("../controllers/Orders")
+const {readOrders,createorder,updateOrders} = require("../controllers/Orders")
 
 router.get("/read-foods", readMenu)
 router.post("/create-user", validateCreate, register)
@@ -75,6 +75,7 @@ router.delete(
 router.put("/update-menu", verifyToken, verifyIsAdmin, updateMenu)
 
 router.get("/read-Orders",readOrders)
+router.post("/update-Orders",updateOrders)
 router.post("/create-Orders",createorder)
 
 module.exports = router

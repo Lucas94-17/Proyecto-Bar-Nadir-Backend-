@@ -4,6 +4,7 @@ const { model, Schema } = mongoose
 
 
 const menuSchema = new Schema({
+	id : String,
 	datos: {
 		type: Object,
 		required: true,
