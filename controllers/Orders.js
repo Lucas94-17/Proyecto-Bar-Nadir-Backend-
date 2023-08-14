@@ -7,7 +7,8 @@ async function createorder  (req,res) {
         const data = new OrdersModel({
             datos,
             items,
-            total
+            total,
+            estado:"En espera",
 
         })
         data.save()
@@ -27,8 +28,72 @@ async function readOrders(_, res) {
 		res.status(400).json({ message: error.message })
 	}
 }
+async function updateOrderStatusToProcess(req, res) {
+    const orderId = req.params.id;
+  
+    try {
+      const updatedOrder = await OrdersModel.findByIdAndUpdate(
+        orderId,
+        { estado: "En proceso" },
+        { new: true }
+      );
+  
+      if (!updatedOrder) {
+        return res.status(404).json({ message: "Order not found" });
+      }
+  
+      res.json(updatedOrder);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  }
+
+  async function updateOrderStatusToFinished(req, res) {
+    const orderId = req.params.id;
+  
+    try {
+      const updatedOrder = await OrdersModel.findByIdAndUpdate(
+        orderId,
+        { estado: "Terminado" },
+        { new: true }
+      );
+  
+      if (!updatedOrder) {
+        return res.status(404).json({ message: "Order not found" });
+      }
+  
+      res.json(updatedOrder);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  }
+
+  async function updateOrderStatusToSend(req, res) {
+    const orderId = req.params.id;
+  
+    try {
+      const updatedOrder = await OrdersModel.findByIdAndUpdate(
+        orderId,
+        { estado: "Enviado" },
+        { new: true }
+      );
+  
+      if (!updatedOrder) {
+        return res.status(404).json({ message: "Order not found" });
+      }
+  
+      res.json(updatedOrder);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  }
+  
+  
 
 module.exports = {
     createorder,
     readOrders,
+    updateOrderStatusToProcess,
+    updateOrderStatusToFinished,
+    updateOrderStatusToSend,
 }

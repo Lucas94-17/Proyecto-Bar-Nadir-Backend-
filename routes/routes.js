@@ -33,7 +33,22 @@ const { verifyIsAdmin } = require("../middlewares/VerifyIsAdmin")
 
 const router = express.Router()
 
-const {readOrders,createorder} = require("../controllers/Orders")
+
+const {
+	createorder,
+	readOrders,
+	updateOrderStatusToProcess,
+	updateOrderStatusToFinished,
+	updateOrderStatusToSend,
+  } = require("../controllers/Orders");
+
+router.get("/read-Orders", readOrders);
+router.post("/create-Orders", createorder);
+router.put("/update-order-status/:id/accept", updateOrderStatusToProcess);
+router.put("/update-order-status/:id/finish", updateOrderStatusToFinished);
+router.put("/update-order-status/:id/send", updateOrderStatusToSend);  
+
+
 
 router.get("/read-foods", readMenu)
 router.post("/create-user", validateCreate, register)

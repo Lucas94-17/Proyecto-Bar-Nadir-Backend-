@@ -1,10 +1,6 @@
-const bcrypt = require("bcrypt")
 const uuid = require("uuid")
-const jwt = require("jsonwebtoken")
-
 const MenuModel = require("../models/Menu")
-const UserModel = require("../models/User")
-const { text } = require("express")
+
 
 async function readMenues(_, res) {
 	try {
