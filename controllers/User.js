@@ -1,4 +1,3 @@
-const User = require("../models/User")
 const UserModel = require("../models/User")
 
 
@@ -43,6 +42,7 @@ async function getUsersPaginated(req,res){
         res.status(400).json({ message : error.message })
     }
 }
+
 async function deleteUser(req,res){
     try{
         const {id} =req.params
@@ -98,10 +98,6 @@ async function readUser(req,res){
     }
 }
 
-// async function readUsers(req,res){
-//     if(Object.keys(req.query).length === 0) getUsers(req,res)
-//     else getUsersPaginated(req,res)
-// }
 
 async function readUsers(_, res) {
 	try {
