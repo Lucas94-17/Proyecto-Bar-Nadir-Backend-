@@ -30,29 +30,6 @@ async function readOrders(_, res) {
 		res.status(400).json({ message: error.message })
 	}
 }
-
-async function updateOrders(req, res) {
-	const { id_order, modify } = req.body
-
-	try {
-		OrdersModel.findOneAndUpdate({ id: id_order }, modify).then(
-			response => {
-				if (response.id) {
-					res.status(200).json({
-						message: `La orden con id ${response.id} fue editado exitosamente.`,
-						data: res.body,
-					})
-				} else {
-					res.status(200).json({
-						message: `No se ha encontrado la orden.`,
-					})
-				}
-			}
-		)
-	} catch (error) {
-		res.status(400).json({ message: error.message })
-	}
-}
 async function updateOrderStatusToProcess(req, res) {
     const orderId = req.params.id;
   
