@@ -25,7 +25,7 @@ const menuSchema = new Schema({
 		type: String,
 		required: true,
 	}
-})
+},{versionKey:false} ) 
 
 
 menuSchema.index({ title: "text", detail: "text", precio: "text", categoria: "text" })

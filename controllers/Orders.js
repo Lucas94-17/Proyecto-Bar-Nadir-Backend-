@@ -30,32 +30,72 @@ async function readOrders(_, res) {
 		res.status(400).json({ message: error.message })
 	}
 }
+async function updateOrderStatusToProcess(req, res) {
+    const orderId = req.params.id;
+  
+    try {
+      const updatedOrder = await OrdersModel.findByIdAndUpdate(
+        orderId,
+        { estado: "En proceso" },
+        { new: true }
+      );
+  
+      if (!updatedOrder) {
+        return res.status(404).json({ message: "Order not found" });
+      }
+  
+      res.json(updatedOrder);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  }
 
-async function updateOrders(req, res) {
-	const { id_order, modify } = req.body
+  async function updateOrderStatusToFinished(req, res) {
+    const orderId = req.params.id;
+  
+    try {
+      const updatedOrder = await OrdersModel.findByIdAndUpdate(
+        orderId,
+        { estado: "Terminado" },
+        { new: true }
+      );
+  
+      if (!updatedOrder) {
+        return res.status(404).json({ message: "Order not found" });
+      }
+  
+      res.json(updatedOrder);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  }
 
-	try {
-		OrdersModel.findOneAndUpdate({ id: id_order }, modify).then(
-			response => {
-				if (response.id) {
-					res.status(200).json({
-						message: `La orden con id ${response.id} fue editado exitosamente.`,
-						data: res.body,
-					})
-				} else {
-					res.status(200).json({
-						message: `No se ha encontrado la orden.`,
-					})
-				}
-			}
-		)
-	} catch (error) {
-		res.status(400).json({ message: error.message })
-	}
-}
+  async function updateOrderStatusToSend(req, res) {
+    const orderId = req.params.id;
+  
+    try {
+      const updatedOrder = await OrdersModel.findByIdAndUpdate(
+        orderId,
+        { estado: "Enviado" },
+        { new: true }
+      );
+  
+      if (!updatedOrder) {
+        return res.status(404).json({ message: "Order not found" });
+      }
+  
+      res.json(updatedOrder);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  }
+  
+  
 
 module.exports = {
     createorder,
     readOrders,
-	updateOrders,
+    updateOrderStatusToProcess,
+    updateOrderStatusToFinished,
+    updateOrderStatusToSend,
 }
