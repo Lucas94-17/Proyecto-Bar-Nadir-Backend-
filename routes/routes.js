@@ -40,6 +40,7 @@ const {
 	updateOrderStatusToProcess,
 	updateOrderStatusToFinished,
 	updateOrderStatusToSend,
+	deleteAllOrders,
   } = require("../controllers/Orders");
 
 router.get("/read-Orders", readOrders);
@@ -47,6 +48,7 @@ router.post("/create-Orders", createorder);
 router.put("/update-order-status/:id/accept", updateOrderStatusToProcess);
 router.put("/update-order-status/:id/finish", updateOrderStatusToFinished);
 router.put("/update-order-status/:id/send", updateOrderStatusToSend);  
+router.delete("/delete-all-orders", deleteAllOrders);
 
 
 
@@ -90,7 +92,6 @@ router.delete(
 router.put("/update-menu", verifyToken, verifyIsAdmin, updateMenu)
 
 router.get("/read-Orders",readOrders)
-router.post("/update-Orders",updateOrders)
 router.post("/create-Orders",createorder)
 
 module.exports = router

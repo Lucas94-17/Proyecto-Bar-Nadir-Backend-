@@ -12,6 +12,12 @@ const orderSchema = new Schema({
 		type: Object,
 		required: true,
 	},
+	detalles: {
+		type: Object,
+	},	
+	cantidad: {
+		type: Object,	
+	},
 	total: {
 		type: Number,
 		required: true,
@@ -24,7 +30,7 @@ const orderSchema = new Schema({
 },{versionKey:false})
 
 
-orderSchema.index({ datos: "text", items: "text", total: "text", estado: "text"})
+orderSchema.index({ datos: "text", items: "text", detalles:"text", cantidad:"text", total: "text", estado: "text"})
 
 
 module.exports = model("Orders", orderSchema)
