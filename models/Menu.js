@@ -28,7 +28,7 @@ const menuSchema = new Schema({
 },{versionKey:false} ) 
 
 
-menuSchema.index({ title: "text", detail: "text", precio: "text", categoria: "text" })
+menuSchema.index({ title: "text", detail: "text", precio: "text", categoria: "text",})
 
 
 module.exports = model("Menues", menuSchema)
