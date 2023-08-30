@@ -15,7 +15,7 @@ async function createorder  (req,res) {
             estado:"En espera",
 
         })
-         data.save()
+         await data.save()
 
         res.status(201).json({
             id: data.id, 
