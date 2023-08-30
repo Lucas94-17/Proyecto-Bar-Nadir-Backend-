@@ -69,9 +69,9 @@ async function updateMenu(req, res) {
 	try {
 		MenuModel.findOneAndUpdate({ id: id_menu }, modify).then(
 			response => {
-				if (response.id) {
+				if (response) {
 					res.status(200).json({
-						message: `El menu con id ${response.id} fue editado exitosamente.`,
+						message: `El menu con id ${id_menu} fue editado exitosamente.`,
 						data: res.body,
 					})
 				} else {
