@@ -16,6 +16,7 @@ const app = express()
 app.use(bodyParser.json());
 
 
+
 mercadopago.configure({
     access_token: "TEST-3310179859344002-082000-ea05e8c5fe815a8f3b02d36615b8ccd6-161277415",
    });
