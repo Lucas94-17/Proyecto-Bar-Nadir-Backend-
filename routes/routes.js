@@ -91,7 +91,6 @@ router.delete(
 )
 router.put("/update-menu", verifyToken, verifyIsAdmin, updateMenu)
 
-router.get("/read-Orders",readOrders)
-router.post("/create-Orders",createorder)
+
 
 module.exports = router
