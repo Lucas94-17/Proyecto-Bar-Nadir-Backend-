@@ -52,7 +52,6 @@ router.delete("/delete-all-orders", deleteAllOrders);
 
 
 
-router.get("/read-foods", readMenu)
 router.post("/create-user", validateCreate, register)
 
 router.delete("/delete-user/:id", validateDelete, deleteUser)
@@ -91,7 +90,6 @@ router.delete(
 )
 router.put("/update-menu", verifyToken, verifyIsAdmin, updateMenu)
 
-router.get("/read-Orders",readOrders)
-router.post("/create-Orders",createorder)
+
 
 module.exports = router
