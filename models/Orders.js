@@ -16,7 +16,7 @@ const orderSchema = new Schema({
 		type: Object,
 	},	
 	cantidad: {
-		type: Object,	
+		type: Number,	
 	},
 	total: {
 		type: Number,
