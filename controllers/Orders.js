@@ -6,7 +6,7 @@ async function createorder  (req,res) {
         const {total,datos,items,detalles,cantidad} =req.body 
 
         const data = new OrdersModel({
-			    id : uuid.v4(),
+			      id : uuid.v4(),
             datos,
             items,
             detalles,
@@ -23,7 +23,8 @@ async function createorder  (req,res) {
           });
     }   catch (error){
         res.status(400).json({
-            message : error.message
+          message: "Error al crear la orden",
+          error: error.message
         })
     }
 }

@@ -4,6 +4,7 @@ const { model, Schema } = mongoose
 
 
 const orderSchema = new Schema({
+	_id: String,
 	datos: {
 		type: Object,
 		required: true,
