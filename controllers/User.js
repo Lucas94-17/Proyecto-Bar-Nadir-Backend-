@@ -1,48 +1,6 @@
 const UserModel = require("../models/User")
 
 
-async function getUsers(_,res){
-    try{
-        await UserModel.find().then(response => {
-            const excludePassword = response.map(user=>{ 
-                const {id,username,email} = user
-                return {id,username,email}
-            })
-            res.status(200).json(excludePassword)
-        })
-        
-    }catch (error){
-        res.status(400).json({message:error.message})
-    }
-}
-
-
-async function getUsersPaginated(req,res){
-    const {size,page} =req.query 
-
-    const skip = size * page - size
-
-    try{
-        const data = await UserModel.find()
-        .limit(size)
-        .skip(skip)
-        .then(response =>{
-            const excludePassword = response.map(user => {
-                const {id,name,email} = user
-                return(id,name,email)
-            })
-            return excludePassword
-        })
-        const count = await UserModel.countDocuments()
-        res.status(200).json({
-            data,
-            total:count,
-        })
-    }catch(error){
-        res.status(400).json({ message : error.message })
-    }
-}
-
 async function deleteUser(req,res){
     try{
         const {id} =req.params
