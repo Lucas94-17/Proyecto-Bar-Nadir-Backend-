@@ -6,7 +6,7 @@ async function createorder  (req,res) {
         const {total,datos,items,detalles,cantidad} =req.body 
 
         const data = new OrdersModel({
-			id : uuid.v4(),
+			      id : uuid.v4(),
             datos,
             items,
             detalles,
@@ -15,7 +15,7 @@ async function createorder  (req,res) {
             estado:"En espera",
 
         })
-        await data.save()
+         await data.save()
 
         res.status(201).json({
             id: data.id, 
